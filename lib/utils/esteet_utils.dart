@@ -36,6 +36,7 @@ List<EsteetUtils> esteetUtils1 = [
     image: 'assets/esteet/Putki.png',
     title: 'Putkieste', 
     subtitle: 'Esteen suoritus\n● Kissa suorittaa esteen menemällä putken läpi 2 p\n● Kissa menee putken puoleen väliin, mutta palaa takaisin 1 p\n● Kissa kiertää esteen tai hyppää sen yli. 0 p,'
+    
   ),
   EsteetUtils(
     image: 'assets/esteet/Tikas.png',
