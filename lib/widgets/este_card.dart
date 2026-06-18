@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kissa_agility_pisteet/constants/colors.dart';
 import 'package:kissa_agility_pisteet/utils/esteet_utils.dart';
+import 'package:flutter_3d_controller/flutter_3d_controller.dart';
 
 class EsteCardWidget extends StatefulWidget {
   final EsteetUtils esteet;
@@ -31,12 +32,13 @@ class _EsteCardWidgetState extends State<EsteCardWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-            Image.asset(
-              widget.esteet.image,
-              height: 140,
-              width: 250,
-              fit: BoxFit.cover,
-            ),
+            SizedBox(
+            height: 140,
+            width: 250,
+            child: Flutter3DViewer(
+             src: widget.esteet.image,
+               ),
+                  ),
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 15, 12, 12),
             child: Text(
