@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kissa_agility_pisteet/constants/colors.dart';
+import 'package:kissa_agility_pisteet/widgets/animaatio_desktop.dart';
+import 'package:kissa_agility_pisteet/widgets/animaatio_mobile.dart';
 import 'package:kissa_agility_pisteet/widgets/header_desktop.dart';
 import 'package:kissa_agility_pisteet/widgets/header_mobile.dart';
 import 'package:kissa_agility_pisteet/widgets/main_desktop.dart';
 import 'package:kissa_agility_pisteet/widgets/main_mobile.dart';
+import 'package:kissa_agility_pisteet/widgets/animaatio_desktop.dart';
+import 'package:kissa_agility_pisteet/widgets/animaatio_mobile.dart';
 import 'package:kissa_agility_pisteet/widgets/este_section.dart';
 import 'package:kissa_agility_pisteet/constants/size.dart';
 
@@ -34,14 +38,21 @@ class _HomePageState extends State<HomePage> {
               children:[
                 //Main
                 if(constraints.maxWidth>=kMinDesktopWidth)
+
                 HeaderDesktop() else
                 HeaderMobile(),
             
-                
+                /* Main piiloon, testin ajaksi
                 if(constraints.maxWidth>=kMinDesktopWidth+200)
                   MainDesktop()
                 else
                   const MainMobile(),
+                */ 
+                // Estekortti mainin tilalle ennen sivun tekoa
+                if(constraints.maxWidth>=kMinDesktopWidth+200)
+                  AnimaatioDesktop()
+                else
+                  const AnimaatioMobile(),
                 
                 //ESTEET
                 const SizedBox(height: 30), 

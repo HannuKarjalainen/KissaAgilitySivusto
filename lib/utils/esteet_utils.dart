@@ -2,11 +2,13 @@ class EsteetUtils {
   final String image;
   final String title;
   final String subtitle;
+  final String? image2;
 
   EsteetUtils({
     required this.image,
     required this.title,
     required this.subtitle,
+    this.image2,
   });
 }
 
@@ -14,13 +16,9 @@ class EsteetUtils {
 List<EsteetUtils> esteetUtils1 = [
   EsteetUtils(
     image: 'assets/esteet/A-este alo3D.glb',
-    title: 'A-este Alokasluokka', 
+    title: 'A-este Alokas- ja Avoinluokka', 
     subtitle: 'Esteen suoritus\n● Kissa kiipeää esteelle ja laskeutuu toista sivua pitkin.\nKissa kiipeää askeltamalla esteen sivua pitkin esteen ylös ja laskeutuu toista sivua pitkin alas. 2 p\n● Kissa askeltaen kiipeää esteelle tai laskeutuu alas esteeltä askeltaen, mutta hyppää esteelle menon tai alastulon. 1p\n● Kissa hyppää pöydältä esteen ylös, askeltamatta sivua ja hyppää esteeltä suoraan alas, laskeutumatta toista sivua pitkin tai ohittaa esteen. 0 p',
-  ),
-  EsteetUtils(
-    image: 'assets/esteet/A-este avo3D.glb',
-    title: 'A-este Avo-luokka', 
-    subtitle: 'Esteen suoritus\n● Kissa kiipeää esteelle ja laskeutuu toista sivua pitkin.\nKissa kiipeää askeltamalla esteen sivua pitkin esteen ylös ja laskeutuu toista sivua pitkin alas. 2 p\n● Kissa askeltaen kiipeää esteelle tai laskeutuu alas esteeltä askeltaen, mutta hyppää esteelle menon tai alastulon. 1p\n● Kissa hyppää pöydältä esteen ylös, askeltamatta sivua ja hyppää esteeltä suoraan alas, laskeutumatta toista sivua pitkin tai ohittaa esteen. 0 p',
+    image2: 'assets/esteet/A-este avo3D.glb',  
   ),
   EsteetUtils(
     image: 'assets/esteet/Hyppyeste3D.glb',
@@ -34,19 +32,14 @@ List<EsteetUtils> esteetUtils1 = [
   ),
   EsteetUtils(
     image: 'assets/esteet/Pujottelu Alo3D.glb',
-    title: 'Pujottelueste Alokasluokka', 
+    title: 'Pujottelueste Alokas- ja Avoinluokka', 
     subtitle: 'Esteen suoritus\n● Kissa pujottelee kaikki keppien välit. 2 p\n● Kissa pujottelee vähintään 2 keppien väliä. 1 p\n● Kissa ohittaa esteen tai pujottelee vain yhdestä välistä. 0p\nAlokasluokka: Pujottelu estettä voidaan helpottaa enemmän kujan malliseksi.\nAvoin luokka: Pujottelu on täyssuora.',
-  ),
-  EsteetUtils(
-    image: 'assets/esteet/Pujottelu Avo3D.glb',
-    title: 'Pujottelueste Avo-luokka', 
-    subtitle: 'Esteen suoritus\n● Kissa pujottelee kaikki keppien välit. 2 p\n● Kissa pujottelee vähintään 2 keppien väliä. 1 p\n● Kissa ohittaa esteen tai pujottelee vain yhdestä välistä. 0p\nAlokasluokka: Pujottelu estettä voidaan helpottaa enemmän kujan malliseksi.\nAvoin luokka: Pujottelu on täyssuora.',
+    image2: 'assets/esteet/Pujottelu Avo3D.glb',
   ),
   EsteetUtils(
     image: 'assets/esteet/Putkieste3D.glb',
     title: 'Putkieste', 
     subtitle: 'Esteen suoritus\n● Kissa suorittaa esteen menemällä putken läpi 2 p\n● Kissa menee putken puoleen väliin, mutta palaa takaisin 1 p\n● Kissa kiertää esteen tai hyppää sen yli. 0 p,'
-    
   ),
   EsteetUtils(
     image: 'assets/esteet/Tikaseste3D.glb',

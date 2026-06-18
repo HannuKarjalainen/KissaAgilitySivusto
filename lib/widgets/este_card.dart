@@ -22,7 +22,7 @@ class _EsteCardWidgetState extends State<EsteCardWidget> {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
-      height: 500,
+      height: 550,
       width: 300,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -32,13 +32,40 @@ class _EsteCardWidgetState extends State<EsteCardWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-            SizedBox(
+            Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+        child: widget.esteet.image2 != null
+          ? Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 140,
+                width: 125,
+                child: Flutter3DViewer(
+                  src: widget.esteet.image,
+                ),
+              ),
+              const SizedBox(width: 16),
+              SizedBox(
+                height: 140,
+                width: 125,
+                child: Flutter3DViewer(
+                  src: widget.esteet.image2!,
+                ),
+              ),
+          ],
+        )
+      : Center(
+          child: SizedBox(
             height: 140,
-            width: 250,
+            width: 125,
             child: Flutter3DViewer(
-             src: widget.esteet.image,
-               ),
-                  ),
+              src: widget.esteet.image,
+            ),
+          ),
+        ),
+),
+            
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 15, 12, 12),
             child: Text(
