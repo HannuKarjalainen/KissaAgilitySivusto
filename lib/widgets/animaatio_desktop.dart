@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:kissa_agility_pisteet/constants/colors.dart';
+import 'package:kissa_agility_pisteet/utils/animaatiot_utils.dart';
 import 'package:flutter_3d_controller/flutter_3d_controller.dart';
 
 class AnimaatioDesktop extends StatefulWidget {
-  const AnimaatioDesktop({super.key});
+  final AnimaatiotUtils animaatio;
+
+  const AnimaatioDesktop({
+    super.key,
+    required this.animaatio,
+  });
 
   @override
   State<AnimaatioDesktop> createState() => _AnimaatioDesktopState();
-  
 }
 
 class _AnimaatioDesktopState extends State<AnimaatioDesktop> {
@@ -16,8 +21,7 @@ class _AnimaatioDesktopState extends State<AnimaatioDesktop> {
   bool _modelLoaded = false;
   bool _isPlaying = false;
 
-  String _currentAnimation =
-      'assets/esteet/Putkieste3D.glb';
+  late String _currentAnimation;
 
   void _changeAnimation(String path) {
     setState(() {
@@ -25,18 +29,21 @@ class _AnimaatioDesktopState extends State<AnimaatioDesktop> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
+@override
+void initState() {
+  super.initState();
 
-    _controller.onModelLoaded.addListener(() {
-      if (_controller.onModelLoaded.value) {
-        setState(() {
-          _modelLoaded = true;
-        });
-      }
-    });
-  }
+  _currentAnimation =
+      widget.animaatio.image;
+
+  _controller.onModelLoaded.addListener(() {
+    if (_controller.onModelLoaded.value) {
+      setState(() {
+        _modelLoaded = true;
+      });
+    }
+  });
+}
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +61,9 @@ class _AnimaatioDesktopState extends State<AnimaatioDesktop> {
 Column(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-    const Text(
-      "Putkieste",
-      style: TextStyle(
+    Text(
+      widget.animaatio.title,
+      style: const TextStyle(
         fontSize: 40,
         height: 3,
         fontWeight: FontWeight.bold,
@@ -74,19 +81,28 @@ Column(
   Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
+    if (widget.animaatio.point2A != null)
     IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(
-            'assets/Animaatiot/KissaJuokseePutkenläpi.glb',
-          );
+          _changeAnimation(widget.animaatio.point2A!);
+        },
+    ),
+    if (widget.animaatio.point2B != null)
+    IconButton(
+        icon: const Icon(
+          Icons.play_circle_fill,
+          color: CustomColor.yellowSecondary,
+        ),
+        onPressed: () {
+          _changeAnimation(widget.animaatio.point2B!);
         },
     ),
     Text(
-      'Kissa suorittaa esteen menemällä putken läpi. 2 p',
+      widget.animaatio.subtitle2p,
       style: TextStyle(
         fontSize: 24,
         height: 1.5,
@@ -98,19 +114,28 @@ Column(
     Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
+    if (widget.animaatio.point1A != null)
     IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(
-            'assets/Animaatiot/KissaJuokseePutkenläpi.glb',
-          );
+          _changeAnimation(widget.animaatio.point1A!);
+        },
+    ),
+    if (widget.animaatio.point1B != null)
+    IconButton(
+        icon: const Icon(
+          Icons.play_circle_fill,
+          color: CustomColor.yellowSecondary,
+        ),
+        onPressed: () {
+          _changeAnimation(widget.animaatio.point1B!);
         },
     ),
     Text(
-      'Kissa menee putken puoleen väliin, mutta palaa takaisin. 1 p',
+      widget.animaatio.subtitle1p,
       style: TextStyle(
         fontSize: 24,
         height: 1.5,
@@ -122,30 +147,28 @@ Column(
       Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
+    if (widget.animaatio.point0A != null)
     IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(
-            'assets/Animaatiot/KissaJuokseePutkenOHI.glb',
-          );
+            _changeAnimation(widget.animaatio.point0A!);
         },
     ),
+    if (widget.animaatio.point0B != null)
       IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(
-            'assets/Animaatiot/KissaHyppääPutkenYli.glb',
-          );
+            _changeAnimation(widget.animaatio.point0B!);
         },
     ),
     Text(
-      'Kissa kiertää esteen tai hyppää sen yli. 0 p',
+      widget.animaatio.subtitle0p,
       style: TextStyle(
         fontSize: 24,
         height: 1.5,

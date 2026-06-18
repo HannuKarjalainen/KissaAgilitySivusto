@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kissa_agility_pisteet/constants/colors.dart';
+import 'package:kissa_agility_pisteet/utils/animaatiot_utils.dart';
 import 'package:kissa_agility_pisteet/widgets/animaatio_desktop.dart';
 import 'package:kissa_agility_pisteet/widgets/animaatio_mobile.dart';
 import 'package:kissa_agility_pisteet/widgets/header_desktop.dart';
@@ -50,10 +51,13 @@ class _HomePageState extends State<HomePage> {
                 */ 
                 // Estekortti mainin tilalle ennen sivun tekoa
                 if(constraints.maxWidth>=kMinDesktopWidth+200)
-                  AnimaatioDesktop()
+                  AnimaatioDesktop(
+                    animaatio: animaatiotUtils1[2],
+                  )
                 else
-                  const AnimaatioMobile(),
-                
+                  AnimaatioMobile(
+                    animaatio: animaatiotUtils1[4],
+                  ),
                 //ESTEET
                 const SizedBox(height: 30), 
                  

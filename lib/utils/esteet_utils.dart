@@ -12,7 +12,6 @@ class EsteetUtils {
   });
 }
 
-//Group Projects
 List<EsteetUtils> esteetUtils1 = [
   EsteetUtils(
     image: 'assets/esteet/A-este alo3D.glb',

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:kissa_agility_pisteet/constants/colors.dart';
+import 'package:kissa_agility_pisteet/utils/animaatiot_utils.dart';
 import 'package:flutter_3d_controller/flutter_3d_controller.dart';
 
 class AnimaatioMobile extends StatefulWidget {
-  const AnimaatioMobile({super.key});
+  final AnimaatiotUtils animaatio;
+
+  const AnimaatioMobile({
+    super.key,
+    required this.animaatio,
+  });
 
   @override
   State<AnimaatioMobile> createState() => _AnimaatioMobileState();
@@ -16,8 +22,7 @@ class _AnimaatioMobileState extends State<AnimaatioMobile> {
   bool _modelLoaded = false;
   bool _isPlaying = false;
 
-  String _currentAnimation =
-      'assets/esteet/Putkieste3D.glb';
+  late String _currentAnimation;
 
   void _changeAnimation(String path) {
     setState(() {
@@ -28,6 +33,9 @@ class _AnimaatioMobileState extends State<AnimaatioMobile> {
   @override
   void initState() {
     super.initState();
+
+    _currentAnimation =
+      widget.animaatio.image;
 
     _controller.onModelLoaded.addListener(() {
       if (_controller.onModelLoaded.value) {
@@ -45,6 +53,7 @@ class _AnimaatioMobileState extends State<AnimaatioMobile> {
     final screenHeight = screenSize.height;
     
     return Container(
+                width: screenWidth,
                 margin: EdgeInsets.symmetric(
                   horizontal: 40.0, 
                   vertical: 30.0,
@@ -58,8 +67,8 @@ class _AnimaatioMobileState extends State<AnimaatioMobile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
               SizedBox(
-                height: 550,
-                width: 550,
+                height: 350,
+                width: screenWidth,
                 child: Flutter3DViewer(
                   controller: _controller,
                   src: _currentAnimation,
@@ -129,104 +138,169 @@ class _AnimaatioMobileState extends State<AnimaatioMobile> {
                 
             
             const SizedBox(height: 30,),
-const Text(
-      "Putkieste",
-      style: TextStyle(
-        fontSize: 40,
-        height: 3,
-        fontWeight: FontWeight.bold,
-        color: CustomColor.whitePrimary,
-      ),
+ Text(
+      widget.animaatio.title,
+                style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                color: CustomColor.whitePrimary,
+              ),
     ),
 
-    const Text(
-      "Esteen suoritus",
-      style: TextStyle(
-        fontSize: 30,
-        color: CustomColor.whitePrimary,
-      ),
-    ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 12, 12, 12),
+            child: Text("Esteen suoritus",
+              style: const TextStyle(
+                fontSize: 14,
+                color: CustomColor.whiteSecondary,
+              ),
+            ),
+          ),
   Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-    IconButton(
+    if (widget.animaatio.point2A != null)
+          IconButton(
+        constraints: const BoxConstraints(
+          minWidth: 0,
+          minHeight: 0,
+        ),
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
         icon: const Icon(
           Icons.play_circle_fill,
+          size: 14,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(
-            'assets/Animaatiot/KissaJuokseePutkenläpi.glb',
-          );
+          _changeAnimation(widget.animaatio.point2A!);
         },
     ),
-    Text(
-      'Kissa suorittaa esteen menemällä putken läpi. 2 p',
-      style: TextStyle(
-        fontSize: 24,
-        height: 1.5,
-        color: CustomColor.whitePrimary,
-      ),           
+    if (widget.animaatio.point2B != null)
+          IconButton(
+        constraints: const BoxConstraints(
+          minWidth: 0,
+          minHeight: 0,
+        ),
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
+        icon: const Icon(
+          Icons.play_circle_fill,
+          size: 14,
+          color: CustomColor.yellowSecondary,
+        ),
+        onPressed: () {
+          _changeAnimation(widget.animaatio.point2B!);
+        },
     ),
+    Padding(
+      padding: const EdgeInsets.fromLTRB(0, 12, 12, 12),
+      child: Text(
+        widget.animaatio.subtitle2p,
+      style: const TextStyle(
+                fontSize: 12,
+                color: CustomColor.whiteSecondary,
+              ),
+            ),
+          ),
       ],
   ),
     Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-    IconButton(
+       if (widget.animaatio.point1A != null)
+        IconButton(
+        constraints: const BoxConstraints(
+          minWidth: 0,
+          minHeight: 0,
+        ),
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
         icon: const Icon(
           Icons.play_circle_fill,
+          size: 14,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(
-            'assets/Animaatiot/KissaJuokseePutkenläpi.glb',
-          );
+          _changeAnimation(widget.animaatio.point1A!);
         },
     ),
-    Text(
-      'Kissa menee putken puoleen väliin, mutta palaa takaisin. 1 p',
-      style: TextStyle(
-        fontSize: 24,
-        height: 1.5,
-        color: CustomColor.whitePrimary,
-      ),           
+    if (widget.animaatio.point1B != null)
+      IconButton(
+        constraints: const BoxConstraints(
+          minWidth: 0,
+          minHeight: 0,
+        ),
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
+        icon: const Icon(
+          Icons.play_circle_fill,
+          size: 14,
+          color: CustomColor.yellowSecondary,
+        ),
+        onPressed: () {
+          _changeAnimation(widget.animaatio.point1B!);
+        },
     ),
+    Padding(
+            padding: const EdgeInsets.fromLTRB(0, 12, 12, 12),
+  
+            child: Text(
+      widget.animaatio.subtitle1p,
+      style: const TextStyle(
+                fontSize: 12,
+                color: CustomColor.whiteSecondary,
+              ),
+            ),
+          ),
     ],
   ),
       Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-    IconButton(
+   if (widget.animaatio.point0A != null)
+          IconButton(
+        constraints: const BoxConstraints(
+          minWidth: 0,
+          minHeight: 0,
+        ),
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
         icon: const Icon(
           Icons.play_circle_fill,
+          size: 14,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(
-            'assets/Animaatiot/KissaJuokseePutkenOHI.glb',
-          );
+            _changeAnimation(widget.animaatio.point0A!);
         },
     ),
-      IconButton(
+    if (widget.animaatio.point0B != null)
+            IconButton(
+        constraints: const BoxConstraints(
+          minWidth: 0,
+          minHeight: 0,
+        ),
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
         icon: const Icon(
           Icons.play_circle_fill,
+          size: 14,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(
-            'assets/Animaatiot/KissaHyppääPutkenYli.glb',
-          );
+            _changeAnimation(widget.animaatio.point0B!);
         },
     ),
-    Text(
-      'Kissa kiertää esteen tai hyppää sen yli. 0 p',
-      style: TextStyle(
-        fontSize: 24,
-        height: 1.5,
-        color: CustomColor.whitePrimary,
-      ),           
-    ),
+    Padding(
+            padding: const EdgeInsets.fromLTRB(0, 12, 12, 12),
+            child: Text(
+      widget.animaatio.subtitle0p,
+      style: const TextStyle(
+                fontSize: 12,
+                color: CustomColor.whiteSecondary,
+              ),
+            ),
+          ),
 
     const SizedBox(height: 16),
                     const SizedBox(height: 15,),
