@@ -291,6 +291,40 @@ class _AnimaatioMobileState extends State<AnimaatioMobile> {
             _changeAnimation(widget.animaatio.point0B!);
         },
     ),
+    if (widget.animaatio.point0C != null)
+            IconButton(
+        constraints: const BoxConstraints(
+          minWidth: 0,
+          minHeight: 0,
+        ),
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
+        icon: const Icon(
+          Icons.play_circle_fill,
+          size: 14,
+          color: CustomColor.yellowSecondary,
+        ),
+        onPressed: () {
+            _changeAnimation(widget.animaatio.point0C!);
+        },
+    ),
+    if (widget.animaatio.point0D != null)
+            IconButton(
+        constraints: const BoxConstraints(
+          minWidth: 0,
+          minHeight: 0,
+        ),
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
+        icon: const Icon(
+          Icons.play_circle_fill,
+          size: 14,
+          color: CustomColor.yellowSecondary,
+        ),
+        onPressed: () {
+            _changeAnimation(widget.animaatio.point0D!);
+        },
+    ),
     Padding(
             padding: const EdgeInsets.fromLTRB(0, 12, 12, 12),
             child: Text(

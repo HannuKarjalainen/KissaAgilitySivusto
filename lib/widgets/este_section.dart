@@ -4,7 +4,13 @@ import 'package:kissa_agility_pisteet/utils/esteet_utils.dart';
 import 'package:kissa_agility_pisteet/widgets/este_card.dart';
 
 class EsteSection extends StatelessWidget {
-  const EsteSection({super.key});
+  final ValueChanged<int> onSelected;
+
+  const EsteSection({
+    super.key,
+    required this.onSelected,
+  });
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +35,13 @@ class EsteSection extends StatelessWidget {
                         spacing: 25,
                         runSpacing: 25,
                         children: [
-                          for(int i=0; i < esteetUtils1.length; i++)
-                          EsteCardWidget(esteet: esteetUtils1[i],),
+                          for (int i = 0; i < esteetUtils1.length; i++)
+                            GestureDetector(
+                              onTap: () => onSelected(i),
+                              child: EsteCardWidget(
+                                esteet: esteetUtils1[i],
+                              ),
+                            ),
                         ],
                       ),
                     ),

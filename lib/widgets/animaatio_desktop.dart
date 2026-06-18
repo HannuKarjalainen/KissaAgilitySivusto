@@ -23,12 +23,17 @@ class _AnimaatioDesktopState extends State<AnimaatioDesktop> {
 
   late String _currentAnimation;
 
-  void _changeAnimation(String path) {
-    setState(() {
-      _currentAnimation = path;
-    });
-  }
+void _changeAnimation(String path) async {
+  setState(() {
+    _modelLoaded = false;
+    _currentAnimation = path;
+  });
 
+  await Future.delayed(const Duration(milliseconds: 50));
+
+  _controller.stopAnimation();
+  _controller.resetAnimation();
+}
 @override
 void initState() {
   super.initState();
@@ -167,6 +172,26 @@ Column(
             _changeAnimation(widget.animaatio.point0B!);
         },
     ),
+    if (widget.animaatio.point0C != null)
+      IconButton(
+        icon: const Icon(
+          Icons.play_circle_fill,
+          color: CustomColor.yellowSecondary,
+        ),
+        onPressed: () {
+            _changeAnimation(widget.animaatio.point0C!);
+        },
+    ),
+    if (widget.animaatio.point0C != null)
+      IconButton(
+        icon: const Icon(
+          Icons.play_circle_fill,
+          color: CustomColor.yellowSecondary,
+        ),
+        onPressed: () {
+            _changeAnimation(widget.animaatio.point0C!);
+        },
+    ),
     Text(
       widget.animaatio.subtitle0p,
       style: TextStyle(
@@ -189,9 +214,10 @@ Column(
                 height: 550,
                 width: 550,
                 child: Flutter3DViewer(
+                  key: ValueKey(_currentAnimation),
                   controller: _controller,
                   src: _currentAnimation,
-                ),
+                )
               ),
 
               const SizedBox(height: 16),

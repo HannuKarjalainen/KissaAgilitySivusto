@@ -23,6 +23,35 @@ class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final scrollController = ScrollController();
 
+  late AnimaatiotUtils selectedAnimaatio;
+
+  final animaatioKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+
+    selectedAnimaatio = animaatiotUtils1[0];
+  }
+
+  void _selectEste(int index) {
+  setState(() {
+    selectedAnimaatio = animaatiotUtils1[index];
+  });
+
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    final context = animaatioKey.currentContext;
+
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
+  });
+}
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -43,25 +72,32 @@ class _HomePageState extends State<HomePage> {
                 HeaderDesktop() else
                 HeaderMobile(),
             
-                /* Main piiloon, testin ajaksi
+
                 if(constraints.maxWidth>=kMinDesktopWidth+200)
                   MainDesktop()
                 else
                   const MainMobile(),
-                */ 
+
                 // Estekortti mainin tilalle ennen sivun tekoa
                 if(constraints.maxWidth>=kMinDesktopWidth+200)
-                  AnimaatioDesktop(
-                    animaatio: animaatiotUtils1[2],
-                  )
-                else
-                  AnimaatioMobile(
-                    animaatio: animaatiotUtils1[4],
+                Container(
+                  key: animaatioKey,
+                  child: AnimaatioDesktop(
+                  animaatio: selectedAnimaatio,
                   ),
-                //ESTEET
+                )
+                else
+                Container(
+                  key: animaatioKey,
+                  child: AnimaatioMobile(
+                    animaatio: selectedAnimaatio,
+                  ),
+                ),
                 const SizedBox(height: 30), 
                  
-                EsteSection(),
+                EsteSection(
+                  onSelected: _selectEste,
+                ),
                 const SizedBox(height: 30),
                 //Contact
 

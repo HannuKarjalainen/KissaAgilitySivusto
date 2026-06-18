@@ -11,6 +11,8 @@ class AnimaatiotUtils {
   final String? point1B;
   final String? point0A;
   final String? point0B;
+  final String? point0C;
+  final String? point0D;
   final String? luokka;
 
   AnimaatiotUtils({
@@ -26,6 +28,8 @@ class AnimaatiotUtils {
     this.point1B,
     this.point0A,
     this.point0B,
+    this.point0C,
+    this.point0D,
     this.luokka,
   });
 }
@@ -38,6 +42,12 @@ List<AnimaatiotUtils> animaatiotUtils1 = [
     subtitle2p: 'Kissa kiipeää esteelle ja laskeutuu toista sivua pitkin.\nKissa kiipeää askeltamalla esteen sivua pitkin esteen ylös ja laskeutuu toista sivua pitkin alas. 2 p',
     subtitle1p: 'Kissa askeltaen kiipeää esteelle tai laskeutuu alas esteeltä askeltaen,\nmutta hyppää esteelle menon tai alastulon. 1p',
     subtitle0p: 'Kissa hyppää pöydältä esteen ylös,\n askeltamatta sivua ja hyppää esteeltä suoraan alas,\nlaskeutumatta toista sivua pitkin tai ohittaa esteen. 0 p',
+    point2B: 'assets/Animaatiot/A-ESTKissaJuokseeA-esteAlo2pistettä.glb',
+    point1B: 'assets/Animaatiot/A-ESTKissaJuokseeA-esteAlo1pistettähyppäätoisenpuolen.glb',
+    point0A: 'assets/Animaatiot/A-ESTKissaJuokseeA-esteAvo0pistettähyppää.glb',
+    point0B: 'assets/Animaatiot/A-ESTKissaJuokseeA-esteAlo0pistettähyppää.glb',
+    point0C: 'assets/Animaatiot/A-ESTKissaJuokseeA-esteAvo0pistettäOHI.glb',
+    point0D: 'assets/Animaatiot/A-ESTKissaJuokseeA-esteAlo0pistettäOHI.glb',
   ),
   AnimaatiotUtils(
     image: 'assets/esteet/Hyppyeste3D.glb',
@@ -45,6 +55,9 @@ List<AnimaatiotUtils> animaatiotUtils1 = [
     subtitle2p: 'Kissa hyppää esteen yli koskematta esteeseen. 2 p',
     subtitle1p: 'Kissa kiipeää esteen yli koskemalla esteeseen. 1 p',
     subtitle0p: 'Kissa menee esteen välistä tai kissa kiertää esteen. 0 p',
+    point2A: 'assets/Animaatiot/HyppyKissaHyppaaYli2Pistettä.glb',
+    point1A: 'assets/Animaatiot/HyppyesteKissaOsuu1Pisteglb.glb',
+    point0A: 'assets/Animaatiot/HyppyKissaJuokseeOHI.glb',
   ),
   AnimaatiotUtils(
     image: 'assets/esteet/Lapimeno3D.glb',
