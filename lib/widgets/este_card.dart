@@ -96,7 +96,7 @@ class _EsteCardWidgetState extends State<EsteCardWidget> {
             child: Row(
               children: [
                 const Text(
-                  "Tänne animaation valinta?:",
+                  "Pana tästä nähdäksesi esimerkit:",
                   style: TextStyle(
                     color: CustomColor.yellowSecondary,
                     fontSize: 10,
