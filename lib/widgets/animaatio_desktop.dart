@@ -20,6 +20,9 @@ class _AnimaatioDesktopState extends State<AnimaatioDesktop> {
 
   bool _modelLoaded = false;
   bool _isPlaying = false;
+  bool _isAvoinLuokka = false;
+
+  late AnimaatiotUtils _currentEste;
 
   late String _currentAnimation;
 
@@ -29,12 +32,25 @@ class _AnimaatioDesktopState extends State<AnimaatioDesktop> {
     });
   }
 
+  @override
+void didUpdateWidget(covariant AnimaatioDesktop oldWidget) {
+  super.didUpdateWidget(oldWidget);
+
+  if (oldWidget.animaatio.image != widget.animaatio.image) {
+    setState(() {
+      _currentEste = widget.animaatio;
+      _currentAnimation = widget.animaatio.image;
+      _modelLoaded = true;
+    });
+  }
+}
+
 @override
 void initState() {
   super.initState();
 
-  _currentAnimation =
-      widget.animaatio.image;
+  _currentEste = widget.animaatio;
+  _currentAnimation = _currentEste.image;
 
   _controller.onModelLoaded.addListener(() {
     if (_controller.onModelLoaded.value) {
@@ -42,6 +58,26 @@ void initState() {
         _modelLoaded = true;
       });
     }
+  });
+}
+
+void _toggleLuokka() {
+  final index = animaatiotUtils1.indexWhere(
+    (e) => e.title.split(' ').first ==
+           _currentEste.title.split(' ').first,
+  );
+
+  if (index == -1) return;
+
+  setState(() {
+    _isAvoinLuokka = !_isAvoinLuokka;
+
+    _currentEste =
+        _isAvoinLuokka
+            ? animaatiotUtils2[index]
+            : animaatiotUtils1[index];
+
+    _currentAnimation = _currentEste.image;
   });
 }
 
@@ -61,8 +97,31 @@ void initState() {
 Column(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
+    if (_currentEste.luokka != null)
+  Row(
+    children: [
+      const Text(
+        "Alokas",
+        style: TextStyle(
+          color: CustomColor.whitePrimary,
+        ),
+      ),
+
+      Switch(
+        value: _isAvoinLuokka,
+        onChanged: (_) => _toggleLuokka(),
+      ),
+
+      const Text(
+        "Avoin",
+        style: TextStyle(
+          color: CustomColor.whitePrimary,
+        ),
+      ),
+    ],
+  ),
     Text(
-      widget.animaatio.title,
+      _currentEste.title,
       style: const TextStyle(
         fontSize: 40,
         height: 3,
@@ -81,28 +140,28 @@ Column(
   Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-    if (widget.animaatio.point2A != null)
+    if (_currentEste.point2A != null)
     IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(widget.animaatio.point2A!);
+          _changeAnimation(_currentEste.point2A!);
         },
     ),
-    if (widget.animaatio.point2B != null)
+    if (_currentEste.point2B != null)
     IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(widget.animaatio.point2B!);
+          _changeAnimation(_currentEste.point2B!);
         },
     ),
     Text(
-      widget.animaatio.subtitle2p,
+      _currentEste.subtitle2p,
       style: TextStyle(
         fontSize: 24,
         height: 1.5,
@@ -114,28 +173,28 @@ Column(
     Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-    if (widget.animaatio.point1A != null)
+    if (_currentEste.point1A != null)
     IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(widget.animaatio.point1A!);
+          _changeAnimation(_currentEste.point1A!);
         },
     ),
-    if (widget.animaatio.point1B != null)
+    if (_currentEste.point1B != null)
     IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-          _changeAnimation(widget.animaatio.point1B!);
+          _changeAnimation(_currentEste.point1B!);
         },
     ),
     Text(
-      widget.animaatio.subtitle1p,
+      _currentEste.subtitle1p,
       style: TextStyle(
         fontSize: 24,
         height: 1.5,
@@ -147,48 +206,48 @@ Column(
       Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-    if (widget.animaatio.point0A != null)
+    if (_currentEste.point0A != null)
     IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-            _changeAnimation(widget.animaatio.point0A!);
+            _changeAnimation(_currentEste.point0A!);
         },
     ),
-    if (widget.animaatio.point0B != null)
+    if (_currentEste.point0B != null)
       IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-            _changeAnimation(widget.animaatio.point0B!);
+            _changeAnimation(_currentEste.point0B!);
         },
     ),
-    if (widget.animaatio.point0C != null)
+    if (_currentEste.point0C != null)
       IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-            _changeAnimation(widget.animaatio.point0C!);
+            _changeAnimation(_currentEste.point0C!);
         },
     ),
-    if (widget.animaatio.point0C != null)
+    if (_currentEste.point0C != null)
       IconButton(
         icon: const Icon(
           Icons.play_circle_fill,
           color: CustomColor.yellowSecondary,
         ),
         onPressed: () {
-            _changeAnimation(widget.animaatio.point0D!);
+            _changeAnimation(_currentEste.point0D!);
         },
     ),
     Text(
-      widget.animaatio.subtitle0p,
+      _currentEste.subtitle0p,
       style: TextStyle(
         fontSize: 24,
         height: 1.5,
