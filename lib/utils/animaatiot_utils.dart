@@ -93,13 +93,15 @@ List<AnimaatiotUtils> animaatiotUtils1 = [
   ),
   AnimaatiotUtils(
     image: 'assets/esteet/Tikaseste3D.glb',
-    title: 'Tikaseste Alokas- ja Avoinluokka', 
+    title: 'Tikaseste Alokasluokka', 
     subtitle2p: 'Kissa suorittaa tikasesteen kävelemällä esteen läpi niin,\nettä tassut menevät jokaisen pinnan välistä. 2 p',
     subtitle1p: 'Kissa kävelee/ylittää esteen niin,\nettä kävelee tikkaiden päältä. 1 p',
     subtitle0p: 'Kissa hyppää esteen yli kiertää sen tai\nvain yksi tassu osuu tikkaiden väliin tai päälle. 0 p.',
+    point2A: 'assets/Animaatiot/TikasKissaKäveleeTikasEsteAlo.glb',
     point1A: 'assets/Animaatiot/TikasKissaJuokseetikkaidenYli1Piste.glb',
     point0A: 'assets/Animaatiot/TikasKissaJuokseeTikkaanOHI.glb',
     point0B: 'assets/Animaatiot/TikasKissaHyppääTikkaidenYli.glb',
+    luokka: 'Este voidaan kääntää nurinpäin, jolloin se on helpompi suorittaa.',
   ),
   AnimaatiotUtils(
     image: 'assets/esteet/Yliali3d.glb',
@@ -175,13 +177,15 @@ List<AnimaatiotUtils> animaatiotUtils2 = [
   ),
   AnimaatiotUtils(
     image: 'assets/esteet/Tikaseste3D.glb',
-    title: 'Tikaseste Alokas- ja Avoinluokka', 
+    title: 'Tikaseste Avoinluokka', 
     subtitle2p: 'Kissa suorittaa tikasesteen kävelemällä esteen läpi niin,\nettä tassut menevät jokaisen pinnan välistä. 2 p',
     subtitle1p: 'Kissa kävelee/ylittää esteen niin,\nettä kävelee tikkaiden päältä. 1 p',
     subtitle0p: 'Kissa hyppää esteen yli kiertää sen tai\nvain yksi tassu osuu tikkaiden väliin tai päälle. 0 p.',
+    point2A: 'assets/Animaatiot/TikasKissaKäveleeTikasEsteAvo.glb',
     point1A: 'assets/Animaatiot/TikasKissaJuokseetikkaidenYli1Piste.glb',
     point0A: 'assets/Animaatiot/TikasKissaJuokseeTikkaanOHI.glb',
     point0B: 'assets/Animaatiot/TikasKissaHyppääTikkaidenYli.glb',
+    luokka: 'Este on normaalisti oikeinpäin.',
   ),
   AnimaatiotUtils(
     image: 'assets/esteet/Yliali3d.glb',
